@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Mini Edit</title>
+    <style>
+        * {
+            outline: 1 solid #555555;
+        }
+
+        iframe {
+            width: 100%;
+            height: 40dvh
+        }
+
+        body {
+            margin: 0
+        }
+
+        textarea {
+            width: 33.33%;
+            resize: none;
+        }
+
+        div {
+            width: 100dvw;
+            height: 50;
+            word-break: break-all;
+            overflow-y: scroll;
+        }
+
+        button:hover {
+            background-color: #c0c0c0;
+        }
+
+        .b {
+            height: auto;
+            display: flex;
+            overflow-y: visible;
+            flex-wrap: wrap;
+        }
+
+        .b button {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+
+<body
+    oninput="i.srcdoc='<style>'+c.value+ '</style><script>'+j.value+'<\/script>'+h.value; s.innerText = 'data:text/html,'+i.srcdoc"
+    id=b>
+    <div>
+        <p id=s style="outline: none">Code URL</p>
+    </div>
+    <div class="b" id=d>
+        <button onclick="window.open('https:\/\/developer.mozilla.org')">Help❔</button>
+        <button onclick="b.oninput()">Run</button>
+        <button onclick="h.value=c.value=j.value='';b.oninput()">Clear</button>
+
+        <button onclick="b.oninput = ''">Disable Live Changes</button>
+        <button
+            onclick="b.oninput = function() {i.srcdoc='<style>'+c.value+ '</style><script>'+j.value+'<\/script>'+h.value; s.innerText = 'data:text/html,'+i.srcdoc}">Enable
+            Live Changes</button>
+        <button onclick="i.style.width='100%';i.style.height='40dvh'">Reset Size</button>
+        <button onclick="i.style.width='390' ; i.style.height='844'">Mobile</button>
+        <button onclick="i.style.width='1024'; i.style.height='768'">Desktop</button>
+    </div>
+    <div style="display: flex; justify-content: center; height: 50dvh;"><textarea placeholder=HTML id=h></textarea>
+        <textarea placeholder=CSS id=c></textarea>
+        <textarea placeholder=JS id=j></textarea>
+    </div>
+    <iframe id=i src="data:text/html,Executed Code Here"></iframe>
+</body>
